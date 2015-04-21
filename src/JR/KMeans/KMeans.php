@@ -33,4 +33,12 @@ class KMeans
 			throw new \Exception('Cluster count cannot be greater than the number of data points.');
 		}
 	}
+	
+	/**
+	 * @return array
+	 */
+	private function getInitialCentroids()
+	{
+		
+	}
 }
