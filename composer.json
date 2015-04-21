@@ -1,0 +1,16 @@
+{
+    "name": "vendor/k-means",
+    "description": "Simple K-Means clustering method implementation.",
+    "authors": [
+        {
+            "name": "RebendaJiri",
+            "email": "jiri.rebenda@htmldriven.com"
+        }
+    ],
+    "require": {
+		"php": ">= 5.3.7"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	}
+}
