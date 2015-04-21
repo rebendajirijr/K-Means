@@ -1,6 +1,7 @@
 {
-    "name": "vendor/k-means",
+    "name": "jr/k-means",
     "description": "Simple K-Means clustering method implementation.",
+	"license": "MIT",
     "authors": [
         {
             "name": "RebendaJiri",
