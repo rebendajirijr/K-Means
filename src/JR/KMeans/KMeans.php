@@ -2,7 +2,7 @@
 
 namespace JR\KMeans;
 
-use Nette;
+require_once __DIR__ . '/Result.php';
 
 /**
  * Description of KMeans.
@@ -16,7 +16,7 @@ class KMeans
 	private $data;
 	
 	/** @var array */
-	private $clusteredData = array();
+	private $clusteredData;
 	
 	public function __construct(array $data)
 	{
@@ -27,8 +27,10 @@ class KMeans
 	}
 	
 	/**
+	 * Generates specified number of clusters.
+	 * 
 	 * @param int $clusterCount >= 2
-	 * @return array
+	 * @return Result
 	 */
 	public function cluster($clusterCount)
 	{
@@ -38,6 +40,8 @@ class KMeans
 		if ($clusterCount > count($this->data)) {
 			throw new \Exception('Cluster count cannot be greater than the number of data points.');
 		}
+		
+		$this->clusteredData = array();
 		
 		do {
 			if (empty($centroids)) {
@@ -57,7 +61,9 @@ class KMeans
 			}
 		} while ($this->check($this->clusteredData, $newClusteredData) === FALSE);
 		
-		return $this->clusteredData;
+		$result = new Result($this->clusteredData, $centroids);
+		
+		return $result;
 	}
 	
 	private function check(array $clusteredData, array $newClusteredData)

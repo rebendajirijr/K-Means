@@ -18,19 +18,23 @@ $data = array(
 	array(10, 9),
 	array(7, 8),
 );
+$clusterCount = 2;
+
 //$data = array();
-//for ($i = 0; $i < 20; $i++) {
+//for ($i = 0; $i < 100; $i++) {
 //	$row = array();
 //	for ($j = 0; $j < 2; $j++) {
 //		$row[] = mt_rand(1, 50);
 //	}
 //	$data[] = $row;
 //}
-$clusterCount = 2;
+//$clusterCount = mt_rand(2, 5);
 
 $kMeans = new KMeans($data);
+$result = $kMeans->cluster($clusterCount);
 
-$clusteredData = $kMeans->cluster($clusterCount);
+$clusteredData = $result->getClusteredData();
+
 $plotData = array();
 foreach (array_combine(range(0, $clusterCount - 1), $clusteredData) as $clusterIndex => $cluster) {
 	$plotData[$clusterIndex] = array(
